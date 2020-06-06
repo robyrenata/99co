@@ -19,7 +19,7 @@
           </p>
         </span>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 right-side">
         <Product />
       </div>
     </div>
@@ -49,6 +49,10 @@ export default Vue.extend({
 <style>
 * {
   color: white;
+}
+
+.right-side {
+  height: 500px;
 }
 
 .text-shadow-pop-bl {
