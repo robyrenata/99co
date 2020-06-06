@@ -1,13 +1,20 @@
 <template>
   <div class="row text-center" id="align-mid">
     <div class="col-2 p-0 m-0">
-      <button class="circle text-center" @click="pageButton('prev')" v-if="page != 0">
-        <img :src="require('../../assets/icon/arrow-left.svg')" alt="arrow_left" />
+      <button
+        class="circle text-center"
+        @click="pageButton('prev')"
+        v-if="page != 0"
+      >
+        <img
+          :src="require('../../assets/icon/arrow-left.svg')"
+          alt="arrow_left"
+        />
       </button>
     </div>
     <div class="col-8" v-if="filterdProducts.length">
       <transition name="flip" enter-active-class="roll-in-blurred-top">
-        <div class="card" v-for="(prd) in filterdProducts" :key="prd.id">
+        <div class="card" v-for="prd in filterdProducts" :key="prd.id">
           <div class="card-header">
             <img :src="prd.productImage" />
           </div>
@@ -15,60 +22,97 @@
           <div class="card-body pl-2 pr-2">
             <div class="row" id="align-mid">
               <div class="col-10 pt-0 pb-0 text-left">
-                <span class="badge" v-if="prd.type ==='sell'">Dijual</span>
-                <span class="badge" v-if="prd.type ==='rent'">Disewakan</span>
+                <span class="badge" v-if="prd.type === 'sell'">Dijual</span>
+                <span class="badge" v-if="prd.type === 'rent'">Disewakan</span>
                 <span class="chip ml-2" v-if="prd.negotiable">Nego</span>
               </div>
               <div class="col pt-0 pb-0 text-right">
                 <span class="like">
-                  <img :src="require('../../assets/icon/love.svg')" alt="like" />
+                  <img
+                    :src="require('../../assets/icon/love.svg')"
+                    alt="like"
+                  />
                 </span>
               </div>
             </div>
             <div class="row" id="align-mid">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 pt-0 pb-0 p0 text-left">
-                <span class="price">Rp. {{prd.price}} jt</span>
+              <div
+                class="col-xs-12 col-sm-12 col-md-12 col-lg-4 pt-0 pb-0 p0 text-left"
+              >
+                <span class="price">Rp. {{ prd.price }} jt</span>
               </div>
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 pt-0 pb-0 text-left">
-                <span class="tenor">Cicilan Rp {{prd.tenor}}jt/bln</span>
+              <div
+                class="col-xs-12 col-sm-12 col-md-12 col-lg-8 pt-0 pb-0 text-left"
+              >
+                <span class="tenor">Cicilan Rp {{ prd.tenor }}jt/bln</span>
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 specs pt-0 pb-0" id="align-mid">
+              <div
+                class="col-xs-6 col-sm-6 col-md-6 col-lg-3 specs pt-0 pb-0"
+                id="align-mid"
+              >
                 <span class="ico">
-                  <img :src="require('../../assets/icon/bedroom.svg')" alt="bedroom" />
+                  <img
+                    :src="require('../../assets/icon/bedroom.svg')"
+                    alt="bedroom"
+                  />
                 </span>
-                <span class="spec">{{prd.totalBedroom}} K.Tidur</span>
+                <span class="spec">{{ prd.totalBedroom }} K.Tidur</span>
               </div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 specs pt-0 pb-0" id="align-mid">
+              <div
+                class="col-xs-6 col-sm-6 col-md-6 col-lg-3 specs pt-0 pb-0"
+                id="align-mid"
+              >
                 <span class="ico">
-                  <img :src="require('../../assets/icon/bathroom.svg')" alt="bathroom" />
+                  <img
+                    :src="require('../../assets/icon/bathroom.svg')"
+                    alt="bathroom"
+                  />
                 </span>
-                <span class="spec">{{prd.totalBathroom}} K.Mandi</span>
+                <span class="spec">{{ prd.totalBathroom }} K.Mandi</span>
               </div>
 
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 specs pt-0 pb-0" id="align-mid">
+              <div
+                class="col-xs-6 col-sm-6 col-md-6 col-lg-3 specs pt-0 pb-0"
+                id="align-mid"
+              >
                 <span class="ico">
-                  <img :src="require('../../assets/icon/building-space.svg')" alt="building_space" />
+                  <img
+                    :src="require('../../assets/icon/building-space.svg')"
+                    alt="building_space"
+                  />
                 </span>
-                <span class="spec">{{prd.spaceBuilding}}m2</span>
+                <span class="spec">{{ prd.spaceBuilding }}m2</span>
               </div>
 
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 specs pt-0 pb-0" id="align-mid">
+              <div
+                class="col-xs-6 col-sm-6 col-md-6 col-lg-3 specs pt-0 pb-0"
+                id="align-mid"
+              >
                 <span class="ico">
-                  <img :src="require('../../assets/icon/land-space.svg')" alt="land_space" />
+                  <img
+                    :src="require('../../assets/icon/land-space.svg')"
+                    alt="land_space"
+                  />
                 </span>
-                <span class="spec">{{prd.spaceLand}}m2</span>
+                <span class="spec">{{ prd.spaceLand }}m2</span>
               </div>
             </div>
 
             <div class="row">
               <div class="col">
-                <button class="btn" @click.stop="openModal('detail')">Lihat Detail</button>
+                <button class="btn" @click.stop="openModal('detail')">
+                  Lihat Detail
+                </button>
               </div>
             </div>
 
-            <v-dialog v-model="modal.isOpen" max-width="70%" click:outside="closeModal()">
+            <v-dialog
+              v-model="modal.isOpen"
+              max-width="70%"
+              click:outside="closeModal()"
+            >
               <div class="card">
                 <div class="card-header">
                   <img v-if="modal.type !== 'map'" :src="prd.productImage" />
@@ -79,22 +123,37 @@
                   <div class="modal-wrapper-1" v-if="modal.type == 'detail'">
                     <div class="row" id="align-mid">
                       <div class="col-10 pt-0 pb-0 text-left">
-                        <span class="badge" v-if="prd.type ==='sell'">Dijual</span>
-                        <span class="badge" v-if="prd.type ==='rent'">Disewakan</span>
-                        <span class="chip ml-2" v-if="prd.negotiable">Nego</span>
+                        <span class="badge" v-if="prd.type === 'sell'"
+                          >Dijual</span
+                        >
+                        <span class="badge" v-if="prd.type === 'rent'"
+                          >Disewakan</span
+                        >
+                        <span class="chip ml-2" v-if="prd.negotiable"
+                          >Nego</span
+                        >
                       </div>
                       <div class="col-2 pt-0 pb-0 text-right">
                         <span class="like">
-                          <img :src="require('../../assets/icon/love.svg')" alt="like" />
+                          <img
+                            :src="require('../../assets/icon/love.svg')"
+                            alt="like"
+                          />
                         </span>
                       </div>
                     </div>
                     <div class="row" id="align-mid">
-                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 pt-0 pb-0 p0 text-left">
-                        <span class="price">Rp. {{prd.price}} jt</span>
+                      <div
+                        class="col-xs-12 col-sm-12 col-md-12 col-lg-4 pt-0 pb-0 p0 text-left"
+                      >
+                        <span class="price">Rp. {{ prd.price }} jt</span>
                       </div>
-                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 pt-0 pb-0 text-left">
-                        <span class="tenor">Cicilan Rp {{prd.tenor}}jt/bln</span>
+                      <div
+                        class="col-xs-12 col-sm-12 col-md-12 col-lg-8 pt-0 pb-0 text-left"
+                      >
+                        <span class="tenor"
+                          >Cicilan Rp {{ prd.tenor }}jt/bln</span
+                        >
                       </div>
                     </div>
                     <div class="row">
@@ -103,18 +162,26 @@
                         id="align-mid"
                       >
                         <span class="ico">
-                          <img :src="require('../../assets/icon/bedroom.svg')" alt="bedroom" />
+                          <img
+                            :src="require('../../assets/icon/bedroom.svg')"
+                            alt="bedroom"
+                          />
                         </span>
-                        <span class="spec">{{prd.totalBedroom}} K.Tidur</span>
+                        <span class="spec">{{ prd.totalBedroom }} K.Tidur</span>
                       </div>
                       <div
                         class="col-xs-6 col-sm-6 col-md-6 col-lg-3 specs pt-0 pb-0"
                         id="align-mid"
                       >
                         <span class="ico">
-                          <img :src="require('../../assets/icon/bathroom.svg')" alt="bathroom" />
+                          <img
+                            :src="require('../../assets/icon/bathroom.svg')"
+                            alt="bathroom"
+                          />
                         </span>
-                        <span class="spec">{{prd.totalBathroom}} K.Mandi</span>
+                        <span class="spec"
+                          >{{ prd.totalBathroom }} K.Mandi</span
+                        >
                       </div>
 
                       <div
@@ -123,11 +190,13 @@
                       >
                         <span class="ico">
                           <img
-                            :src="require('../../assets/icon/building-space.svg')"
+                            :src="
+                              require('../../assets/icon/building-space.svg')
+                            "
                             alt="building_space"
                           />
                         </span>
-                        <span class="spec">{{prd.spaceBuilding}}m2</span>
+                        <span class="spec">{{ prd.spaceBuilding }}m2</span>
                       </div>
 
                       <div
@@ -135,9 +204,12 @@
                         id="align-mid"
                       >
                         <span class="ico">
-                          <img :src="require('../../assets/icon/land-space.svg')" alt="land_space" />
+                          <img
+                            :src="require('../../assets/icon/land-space.svg')"
+                            alt="land_space"
+                          />
                         </span>
-                        <span class="spec">{{prd.spaceLand}}m2</span>
+                        <span class="spec">{{ prd.spaceLand }}m2</span>
                       </div>
                     </div>
                   </div>
@@ -146,10 +218,10 @@
                     <div class="container">
                       <div class="row" id="align-mid">
                         <div class="col-12">
-                          <h1 class="text-bold">{{prd.addressName}}</h1>
+                          <h1 class="text-bold">{{ prd.addressName }}</h1>
                         </div>
                         <div class="col-12">
-                          <p>{{prd.addressDetail}}</p>
+                          <p>{{ prd.addressDetail }}</p>
                         </div>
                       </div>
                     </div>
@@ -161,12 +233,16 @@
                         class="btn"
                         v-if="modal.type != 'map'"
                         @click.stop="modal.type = 'map'"
-                      >Lihat Peta</button>
+                      >
+                        Lihat Peta
+                      </button>
                       <button
                         class="btn"
                         v-if="modal.type == 'map'"
                         @click.stop="closeModal()"
-                      >Tutup</button>
+                      >
+                        Tutup
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -180,16 +256,16 @@
       <button
         class="circle text-center"
         @click="pageButton('next')"
-        v-if="page != products.length -1"
+        v-if="page != products.length - 1"
       >
-        <img :src="require('../../assets/icon/arrow-right.svg')" alt="arrow_right" />
+        <img
+          :src="require('../../assets/icon/arrow-right.svg')"
+          alt="arrow_right"
+        />
       </button>
     </div>
   </div>
 </template>
-
-
-
 
 <script>
 import Vue from "vue";
@@ -264,8 +340,7 @@ export default Vue.extend({
   },
 
   methods: {
-    openModal: function(type) {
-      console.log("show modal?", type);
+    openModal: function() {
       this.modal.isOpen = true;
     },
     closeModal: function() {
@@ -273,28 +348,20 @@ export default Vue.extend({
       this.modal.type = "detail";
     },
     pageButton: function(type) {
-      console.log("type", type);
-      console.log("page", this.page);
-      console.log("products", this.products);
-      console.log("product", this.productSelected);
-
       if (type == "prev") {
         if (this.page !== 0) {
           this.page--;
           this.updateArray(this.page);
-          console.log("page", this.page);
         }
       } else if (type == "next") {
         if (this.page !== this.products.length - 1) {
           this.page++;
           this.updateArray(this.page);
-          console.log("page", this.page);
         }
       }
     },
     updateArray: function(i) {
       this.filterdProducts = [this.products[i]];
-      console.log("fil id", this.filterdProducts);
     }
   }
 });
