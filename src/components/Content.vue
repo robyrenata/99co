@@ -4,7 +4,7 @@
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <span>
           <transition name="shadow" enter-to-class="text-shadow-pop-bl">
-            <h1 class="text-shadow-pop-over" v-if="show">
+            <h1 class="text-shadow-pop-over big-title" v-if="show">
               <b>Start Your Journey</b>
             </h1>
           </transition>
@@ -53,6 +53,10 @@ export default Vue.extend({
 
 .right-side {
   height: 500px;
+}
+
+.big-title {
+  font-size: 45pt;
 }
 
 .text-shadow-pop-bl {
